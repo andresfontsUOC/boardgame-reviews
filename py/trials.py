@@ -9,26 +9,30 @@ import requests
 from pprint import pprint
 #from bs4 import BeautifulSoup
 
-uci_url = "https://archive.ics.uci.edu/ml/index.php"
+#uci_url = "https://archive.ics.uci.edu/ml/index.php"
 
+# Defino las url que uso en este ejemplo
 url = "https://mishigeek.com"
 sitemap = "https://mishigeek.com/sitemap.xml"
 
-
+# Capturo la cabezera de la petición HTTP
 headers = requests.utils.default_headers()
 
+# Modifico el User Agent para evitar el bloqueo
 headers.update(
     {
          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36',
      }
     )
 
-
+# Petición a la url usando requests
 page = requests.get(sitemap, headers=headers)
 
+# Compruebo que la petición se ha resuelto OK
 if page.ok:
     print("URL " + page.url + " was reached succesfully!")
     
+# Imprimo el contendio de la url consultada con pprint (pretty print)
 pprint(page.content)
 
 
