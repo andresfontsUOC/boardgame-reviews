@@ -7,6 +7,8 @@ Created on Wed Mar 23 18:51:55 2022
 
 import requests
 from bs4 import BeautifulSoup
+import time
+import csv
 
 
 # Defino la url del sitemap
@@ -28,10 +30,42 @@ sitemap_page = requests.get(sitemap, headers=headers)
 # Compruebo que la petición se ha resuelto OK
 if sitemap_page.ok:
     print("URL " + sitemap_page.url + " was reached succesfully!")
+    sitemap_soup = BeautifulSoup(sitemap_page.content)
     
+    # Cerrar la sesión
+    sitemap_page.close()    
+    
+    # Capturar todos los enlaces del sitemap
+    sitemap_all_urls = []
+    for link in sitemap_soup.find_all('loc'):        
+        
+        link_page = requests.get(link.text, headers=headers)
+        time.sleep(0.125) # Delay de 125 ms entre peticiones
+        
+        if link_page.ok:
+            print("URL " + link_page.url + " was reached succesfully!")
+            
+            link_soup = BeautifulSoup(link_page.content)
+            sitemap_all_urls.extend(link_soup.find_all('loc'))        
+            
+            # Cerrar sesión
+            link_page.close()
+        
+        else:
+            print("URL " + link_page.url + " was NOT reached.")
 
-sitemap_soup = BeautifulSoup(sitemap_page.content)
-print(sitemap_soup.prettify())
+    print(sitemap_all_urls)
 
-# Obtengo todos los enlaces del sitemap
-sitemap_list = sitemap_soup.find_all('loc')
+    
+else:
+    print("URL " + sitemap_page.url + "was NOT reached.")
+    
+# Guardo lista de links a archivo csv
+with open('sitemap_all_links.csv', 'w') as f:
+    writer = csv.writer(f, delimiter=",")
+    
+    for link in sitemap_all_urls:        
+        print(link.text)
+        writer.writerow([link.text])
+
+
