@@ -6,7 +6,8 @@ Created on Wed Mar 23 17:48:02 2022
 """
 
 import requests
-from bs4 import BeautifulSoup
+from pprint import pprint
+#from bs4 import BeautifulSoup
 
 uci_url = "https://archive.ics.uci.edu/ml/index.php"
 
@@ -28,4 +29,6 @@ page = requests.get(sitemap, headers=headers)
 if page.ok:
     print("URL " + page.url + " was reached succesfully!")
     
+pprint(page.content)
+
 
