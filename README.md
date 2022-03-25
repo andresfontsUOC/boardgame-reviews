@@ -12,7 +12,7 @@ Our project has been developed under `python3.7`. We have used `conda` as workin
 Description here
 
 # Authors
-Ignacio Such Ballester (email@uoc.edu)
+Ignacio Such Ballester (isuch@uoc.edu)
 Andrés Fonts Santana (afontss@uoc.edu)
 
 # License
