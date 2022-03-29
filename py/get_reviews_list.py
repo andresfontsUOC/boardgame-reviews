@@ -11,8 +11,15 @@ import time
 import csv
 
 
-# Defino la url del sitemap
-sitemap = "https://mishigeek.com/sitemap.xml"
+# Defino la url 
+template_url = "https://mishigeek.com/category/resenas/<review_type>/page/<page_num>/"
+
+review_type_list = [
+    "juegaco",
+    "buen-juego",
+    "recomendado",
+    "aprobado",
+    "suspenso"]    
 
 # Capturo la cabezera de la petición HTTP
 headers = requests.utils.default_headers()
@@ -24,48 +31,63 @@ headers.update(
      }
     )
 
-# Petición a la url usando requests
-sitemap_page = requests.get(sitemap, headers=headers)
 
-# Compruebo que la petición se ha resuelto OK
-if sitemap_page.ok:
-    print("URL " + sitemap_page.url + " was reached succesfully!")
-    sitemap_soup = BeautifulSoup(sitemap_page.content)
+
+resena_list = []
+
+for review_type in review_type_list:    
+    page_num = 1
+    next_page = True
     
-    # Cerrar la sesión
-    sitemap_page.close()    
-    
-    # Capturar todos los enlaces del sitemap
-    sitemap_all_urls = []
-    for link in sitemap_soup.find_all('loc'):        
+    while next_page:
         
-        link_page = requests.get(link.text, headers=headers)
-        time.sleep(0.125) # Delay de 125 ms entre peticiones
+        # Petición a la url usando requests
+        url = template_url.replace("<review_type>", review_type).replace("<page_num>", str(page_num))
+        print(url)
         
-        if link_page.ok:
-            print("URL " + link_page.url + " was reached succesfully!")
+        page = requests.get(url, headers=headers)
+        
+        # Compruebo que la petición se ha resuelto OK
+        if page.ok:
+            print("URL " + page.url + " was reached succesfully!\n")
+            soup = BeautifulSoup(page.content)        
             
-            link_soup = BeautifulSoup(link_page.content)
-            sitemap_all_urls.extend(link_soup.find_all('loc'))        
+            for article in soup.find_all('article'):
+                for a in article.find_all('a', href=True):
+                    href = a['href']
+                    
+                    if (href.find('#') == -1) and (href.find("-resena") != -1):                
+                        resena_list.append(href)                
             
-            # Cerrar sesión
-            link_page.close()
-        
+            # Cerrar la sesión
+            page.close()        
+            page_num = page_num + 1       
+            
         else:
-            print("URL " + link_page.url + " was NOT reached.")
-
-    print(sitemap_all_urls)
-
+            print("URL " + page.url + "was NOT reached.")
+            next_page = False
+        
+for k in set(resena_list):
+    print(k)
     
-else:
-    print("URL " + sitemap_page.url + "was NOT reached.")
-    
-# Guardo lista de links a archivo csv
-with open('sitemap_all_links.csv', 'w') as f:
+# Guardo lista de links con reseña
+with open('mishigeek_reviews.csv', 'w') as f:
     writer = csv.writer(f, delimiter=",")
     
-    for link in sitemap_all_urls:        
-        print(link.text)
-        writer.writerow([link.text])
+    for link in resena_list:           
+        writer.writerow([link])
+        
+        
+        
+            
 
 
+        
+
+        
+    
+    
+    
+
+
+    
