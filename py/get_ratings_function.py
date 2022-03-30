@@ -7,13 +7,15 @@ Created on Sat Mar 26 12:51:45 2022
 
 
 import requests
+import re
 from bs4 import BeautifulSoup
-
+import os
+from collections import defaultdict
 # Url que voy a usar
-link = "https://mishigeek.com/its-a-wonderful-kingdom-resena/"
-
-# Evitar bloqueo
-# Capturo la cabezera de la petición HTTP
+link3 = "https://mishigeek.com/its-a-wonderful-kingdom-resena/"
+link2 = "https://mishigeek.com/marco-polo-ii-resena/"
+link="https://mishigeek.com/race-for-the-galaxy-resena-en-espanol/"
+# Capturo la cabecera de la petición HTTP
 headers = requests.utils.default_headers()
 
 # Modifico el User Agent para evitar el bloqueo
@@ -24,16 +26,37 @@ headers.update(
  )
 
 # Me conecto a la url con .get()
-page = requests.get(link, headers=headers)
-page.close()
+sitemap_soup = requests.get(link, headers=headers)
+sitemap_soup.close()
 
-if (page.ok==True):
-    print("OK")
+if (sitemap_soup.ok==True):
+    
+    soup = BeautifulSoup(sitemap_soup.text,features="html.parser")
+    d= defaultdict(dict)
+    key=[]   
+    category=[]
+    value=[]
+    pattern = r'-resena.*$'
+    
+    nombre = re.sub(pattern,'',os.path.basename(link[:-1])).replace('-', ' ').title()
+    key.append(nombre)
+    category.append("Total") 
+    for each_part in soup.select('div[class*="lets-review-block lets-review-block__final-score"]'):
+            value.append(each_part.get_text())
+    for each_part in soup.select('div[class*="lets-review-block__crit__title lr-font-h"]'):
+            category.append(each_part.get_text())
+    for each_part in soup.select('div[class*="lets-review-block__crit__score"]'):
+            value.append(each_part.get_text())
     
     
     
-else:
-    print("Conexión sin éxito")
+    
+    for k in key:
+       for c,v in zip(category,value):
+           d[k][c]=v
+    
+    print(d)
+
         
         
 
