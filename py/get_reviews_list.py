@@ -52,10 +52,14 @@ for review_type in review_type_list:
             print("URL " + page.url + " was reached succesfully!\n")
             soup = BeautifulSoup(page.content)        
             
+            # Itero sobre los elementos 'article'
             for article in soup.find_all('article'):
+                
+                # Itero sobre todo hipervínculo dentro de 'article'
                 for a in article.find_all('a', href=True):
                     href = a['href']
                     
+                    # Filtro con aquellos que son reseñas
                     if (href.find('#') == -1) and (href.find("-resena") != -1):                
                         resena_list.append(href)                
             
@@ -67,6 +71,7 @@ for review_type in review_type_list:
             print("URL " + page.url + "was NOT reached.")
             next_page = False
         
+# Imprimo el resultado
 for k in set(resena_list):
     print(k)
     
