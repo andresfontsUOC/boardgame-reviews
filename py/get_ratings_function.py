@@ -70,7 +70,12 @@ if (sitemap_soup.ok==True):
             value.append(each_part.get_text())
     
     # Obtener la valoración cualitativa
-    
+    div_conclusion = soup.find_all("div",
+                                    {"class": "lets-review-block__conclusion__title lets-review-block__title lr-font-h"})
+     
+    val_cualit = div_conclusion[0].text
+    category.append("Conclusion")
+    value.append(val_cualit)
     
     for c,v in zip(category,value):
         d[nombre][c]=v
