@@ -1,8 +1,8 @@
 # boardgame-reviews
-Overall description here
+Descripción aquí
 
-# Dependencies
-Our project has been developed under `python3.7`. We have used `conda` as working environment. Find below the list of python modules used:
+# Dependencias
+Este proyecto se ha desarrollando en `python 3.7`. Hemos usado `conda` como entorno de trabajo. Las librerías que hemos utilizado son:
 
 * BeautifulSoup4
 * python lib 2
@@ -11,13 +11,14 @@ Our project has been developed under `python3.7`. We have used `conda` as workin
 # Usage
 Description here
 
-# Authors
+# Autores
 Ignacio Such Ballester (isuch@uoc.edu)
 
 Andrés Fonts Santana (afontss@uoc.edu)
 
 # License
-See LICENSE file
+Consultar Licence 
 
 # Dataset License
+TBD
 
