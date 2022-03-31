@@ -31,11 +31,11 @@ headers.update(
      }
     )
 
-
-
+# Guardaré la lista de enlaces en resena_list
 resena_list = []
 
 for review_type in review_type_list:    
+    # Empiezo buscando en la page /1
     page_num = 1
     next_page = True
     
@@ -61,12 +61,13 @@ for review_type in review_type_list:
                     
                     # Filtro con aquellos que son reseñas
                     if (href.find('#') == -1) and (href.find("-resena") != -1):                
-                        resena_list.append(href)                
+                        resena_list.append(href)
             
             # Cerrar la sesión
             page.close()        
             page_num = page_num + 1       
-            
+
+        # TODO hacer un ifelse para 404 not found            
         else:
             print("URL " + page.url + "was NOT reached.")
             next_page = False
@@ -74,16 +75,13 @@ for review_type in review_type_list:
 # Imprimo el resultado
 for k in set(resena_list):
     print(k)
-    
+
+# Guardo como string separado por comas
+resena_csv = ','.join(set(resena_list))
+
 # Guardo lista de links con reseña
 with open('mishigeek_reviews.csv', 'w') as f:
-    writer = csv.writer(f, delimiter=",")
-    
-    for link in resena_list:           
-        writer.writerow([link])
-        
-        
-        
+    f.write(resena_csv)
             
 
 

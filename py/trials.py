@@ -27,7 +27,7 @@ headers.update(
     )
 
 # Petición a la url usando requests
-page = requests.get(sitemap, headers=headers)
+page = requests.get(url, headers=headers)
 page.close()
 # Compruebo que la petición se ha resuelto OK
 if page.ok:
@@ -36,4 +36,5 @@ if page.ok:
 # Imprimo el contendio de la url consultada con pprint (pretty print)
 pprint(page.content)
 
-
+soup = BeautifulSoup(page.content)
+mydivs = soup.find_all("div", {"class": "lets-review-block__conclusion__title lets-review-block__title lr-font-h"})
