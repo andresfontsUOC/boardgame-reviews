@@ -9,7 +9,7 @@ Los integrantes de esta práctica somos:
 ### 1 CONTEXTO
 El contexto que hemos escogido en esta práctica de Web Scraping la recopilación de valoraciones de juegos de mesa. Hemos escogido la página web www.mishigeek.com para realizar esta tarea.
 
-MishiGeek.com contiene centenares de reseñas. En cada una se publican diveros tipos de valoraciones como "Orignialidad" y "Mecánicas". También se asigna una valoración total y una clasificación cualitativa como "Suspenso", "Recomendado" o "Juegaco". 
+MishiGeek.com contiene centenares de reseñas. En cada una se publican diveros tipos de valoraciones como "Originalidad" y "Mecánicas". También se asigna una valoración total y una clasificación cualitativa como "Suspenso", "Recomendado" o "Juegaco". 
 
 ### 2 TÍTULO
 El título del dataset es **Boardgames Ranking**.
@@ -61,7 +61,7 @@ Para poder realizar la tarea de _web scraping_ hemos necesitado tomar tres medid
    * Hemos calculamos un tiempo entre peticiones de _n_ milisegundos.
    * El código se estructura en dos archivos que se ejecutan de forma secuencial. En primer lugar se realiza una búsqueda de enlaces con reseñas y en segundo lugar se analizan los enlaces con reseñas para obtener el _dataset_. Así prevenimos también realizar centenares de peticiones al servidor en un espacio corto de tiempo.
 
-Los datos recogido son propiedad de Javier Rodríguez Menéndez, autor del blog mishigeek.com. Agradecemos la colaboración de Javier al consentir explícitamente la labor de _web scrpaing_ en su dirección web, con la condición de tratar sus datos de manera privada y no distribuirlos de forma pública.
+Los datos recogidos son propiedad de Javier Rodríguez Menéndez, autor del blog mishigeek.com. Agradecemos la colaboración de Javier al consentir explícitamente la labor de _web scrpaing_ en su dirección web, con la condición de tratar sus datos de manera privada y no distribuirlos de forma pública.
 
 Añadir citas de análisis anteriores. Justificar búsqueda con análisis similares (pendiente Andrés Fonts).
 
