@@ -6,14 +6,15 @@ Created on Wed Mar 23 17:48:02 2022
 """
 
 import requests
+from bs4 import BeautifulSoup
 from pprint import pprint
 #from bs4 import BeautifulSoup
 
 #uci_url = "https://archive.ics.uci.edu/ml/index.php"
 
 # Defino las url que uso en este ejemplo
-url = "https://mishigeek.com"
-sitemap = "https://mishigeek.com/sitemap.xml"
+url = "https://mishigeek.com/churchill-resena-en-espanol-es-un-wargame/"
+#sitemap = "https://mishigeek.com/sitemap.xml"
 
 # Capturo la cabezera de la petición HTTP
 headers = requests.utils.default_headers()
@@ -27,7 +28,7 @@ headers.update(
 
 # Petición a la url usando requests
 page = requests.get(sitemap, headers=headers)
-
+page.close()
 # Compruebo que la petición se ha resuelto OK
 if page.ok:
     print("URL " + page.url + " was reached succesfully!")

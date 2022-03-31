@@ -36,42 +36,50 @@ sitemap_soup.close()
 
 # Se crea una función para obtener en forma de diccionario todas las valoraciones y datos sobre el juego de mesa:
 
-def get_info(link):
-    if (sitemap_soup.ok==True):
-        
-        soup = BeautifulSoup(sitemap_soup.text,features="html.parser")
-        d= defaultdict(dict)
-        key=[]   
-        category=[]
-        value=[]
-        otros=[]
-        pattern = r'-resena.*$'
-        
-        # Mediante los bucle for, se buscan todos los valores que coincida con el soup.select
-        for each_part in soup.select('figure[class*="wp-block-table"]'):
-            for each_part in soup.select('tr'):
-                otros.append(each_part.get_text())
-        split_items = (i.split(':') for i in otros[:8])
-        category, value = zip(*split_items)
-        category, value = map(list, (category, value))
-        
-        nombre = re.sub(pattern,'',os.path.basename(link[:-1])).replace('-', ' ').title()
-        key.append(nombre)
-        category.append("Total")
-        
-        for each_part in soup.select('div[class*="lets-review-block lets-review-block__final-score"]'):
-                value.append(each_part.get_text())
-        for each_part in soup.select('div[class*="lets-review-block__crit__title lr-font-h"]'):
-                category.append(each_part.get_text())
-        for each_part in soup.select('div[class*="lets-review-block__crit__score"]'):
-                value.append(each_part.get_text())
-        
-                
-        for k in key:
-           for c,v in zip(category,value):
-               d[k][c]=v
-        
-        print(d)
+#def get_info(link):
+if (sitemap_soup.ok==True):
+    
+    soup = BeautifulSoup(sitemap_soup.text, features="html.parser")
+    d = defaultdict(dict)
+    key = []   
+    category = []
+    value = []
+    otros = []
+    pattern = r'-resena.*$'
+    
+    # Mediante los bucle for, se buscan todos los valores que coincida con el soup.select
+    for each_part in soup.select('figure[class*="wp-block-table"]'):
+        for each_part in soup.select('tr'):
+            otros.append(each_part.get_text())
+            
+    split_items = (i.split(':') for i in otros[:8])
+    category, value = zip(*split_items)
+    category, value = map(list, (category, value))
+    
+    nombre = re.sub(pattern, '', os.path.basename(link[:-1])).replace('-', ' ').title()
+    #key.append(nombre) No necesitas esta línea
+    category.append("Total")
+    
+    for each_part in soup.select('div[class*="lets-review-block lets-review-block__final-score"]'):
+            value.append(each_part.get_text())
+            
+    for each_part in soup.select('div[class*="lets-review-block__crit__title lr-font-h"]'):
+            category.append(each_part.get_text())
+            
+    for each_part in soup.select('div[class*="lets-review-block__crit__score"]'):
+            value.append(each_part.get_text())
+    
+    # Obtener la valoración cualitativa
+    
+    
+    for c,v in zip(category,value):
+        d[nombre][c]=v
+    
+    
+    # for k in key:
+    #    for c,v in zip(category,value):
+    #        d[k][c]=v
+    
+    print(d)
 
         
-
