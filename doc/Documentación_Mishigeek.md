@@ -63,17 +63,26 @@ Para poder realizar la tarea de _web scraping_ hemos necesitado tomar tres medid
 
 Los datos recogidos son propiedad de Javier Rodríguez Menéndez, autor del blog mishigeek.com. Agradecemos la colaboración de Javier al consentir explícitamente la labor de _web scrpaing_ en su dirección web, con la condición de tratar sus datos de manera privada y no distribuirlos de forma pública.
 
-Añadir citas de análisis anteriores. Justificar búsqueda con análisis similares (pendiente Andrés Fonts).
+Hemos identificado análisis similares al que presentamos en este proyecto:
+* **Board Games - Kaggle**. Este _dataset_ contiene datos sobre 20.000 juegos de mesa publicados en el portal BoardGamesGeek (https://boardgamegeek.com/). El acceso al _dataset_ es abierto, publicado en Kaggle:https://www.kaggle.com/datasets/andrewmvd/board-games. Para generar el conjunto de datos han filtrado aquellos juegos publicados que tengan como mínimo 30 valoraciones de usuarios.
+* **Analysis of Boardgames (Dinesh Vatvani)**. En este caso el autor del estudio ha modificado el _scrapper_ de BoardGamesGeek para explorar un _dataset_ más completo. En su blog publica un análisis muy interesante sobre miles de datos (https://dvatvani.github.io/BGG-Analysis-Part-1.html). Su proyecto de _web scrapping_ está disponible aquí: https://github.com/dvatvani/dvatvani.github.io/tree/master/static/BGG-analysis/scraper_and_data
+* **Board Game Data - Kaggle**. Dataset publicado en Kaggle que contiene 5000 juegos, los datos son extraídos de BoardGamesGeek. Enlace: https://www.kaggle.com/datasets/mrpantherson/board-game-data
+* **bgg-games-data - Kaggle**. Dataset de nuevo extraído de BoardGamesGeek con datos de más de 270.000 juegos de mesa. Este data set recoge datos sobre todos los juegos publicados en BoardGamesGeek hasta el 15/7/2020.
 
 ### 7 INSPIRACIÓN
-*	Identificar los mejores juegos publicados cada año según mishigeek.com
-*	Saber qué editoriales de juegos de mesa tienen más éxito
-*	Estudiar los tipos de juego de mesa según la temática/mecánica de juego por editorial, diseñador...
-*	Comparar precios entre editoriales
-*	Buscar un juego de mesa por puntuación y según diferentes criterios
+Los análisis anteriores que hemos identificado se basan en el protal BoardGamesGeek (BGG). Es sin duda el mayor portal de juegos de mesa online. Nuestro dataset se basa en reseñas publicadas por MishiGeek y aporta una visión diferente a los datsets publicados. Encontramos interesante capturar qué opiniones hay fuera BGG y aportar este valor diferencial a los análisis anteriores.
+
+Con nuestro dataset podríamos realizar análisis como:
+*	Identificar los mejores juegos publicados cada año según mishigeek.
+*	Saber qué editoriales de juegos de mesa tienen más éxito segun mishigeek.
+*	Elaborar comparaciones entre reseñas publicadas entre diferentes portales como por ejempllo estudiar sesgos en las valoraciones.
+*	Comparar precios según diferentes atributos.
+* etc.
 
 ### 8 LICENCIA
-a licencia empleada es la licencia _CC BY-NC-SA_, ya que el dueño de la web nos indicó que no se deseaba que se hiciera pública la información por si alguien o empresa la empleaban con uso comerciales. Es por ello que  esta licencia se acopla a las necesidades del autor. Esta licencia ha de reconocer el auténtico autor de los datos, que en este caso es Javier Rodríguez Menéndez, en caso de divulgación de la ingformación obtenida en el dataset resultante. Asimismo, si remezcla, transforma o crea a partir del material, deberá difundir sus contribuciones bajo la misma licencia que el original.
+El propietario de MishiGeek no ha permitido publicar los datos de forma abierta, por lo que no podemos licenciarlos. Contemplamos por eso dos supuestos:
+* En el hipotético caso de que sí accediera a publicarlos escogeríamos la licencia _CC BY-NC-ND_. Esta es la más restrictiva, permite compartir los datos bajo la condición de no modificarlos ni usarlos con fines comerciales y siempre acreditando al autor/a del _dataset_.
+* Generaremos un _dataset_ ficticio que compartiremos bajo la licencia _CC BY_, que permite compartir, modificar y distribuir los datos con fines comerciales y no comerciales, siempre que se acredite al autor/a.
 
 ### 9 CÓDIGO
 
