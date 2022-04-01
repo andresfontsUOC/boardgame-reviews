@@ -40,7 +40,7 @@ if sitemap_page.ok:
     for link in sitemap_soup.find_all('loc'):        
         
         link_page = requests.get(link.text, headers=headers)
-        time.sleep(0.125) # Delay de 125 ms entre peticiones
+        time.sleep(0.01) # Delay de 125 ms entre peticiones
         
         if link_page.ok:
             print("URL " + link_page.url + " was reached succesfully!")

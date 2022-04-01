@@ -9,6 +9,7 @@ import random as rnd
 import time
 from collections import defaultdict
 import csv
+from get_ratings import get_ratings
 
 # Función ficticia get_info()
 def get_info(url):
@@ -37,21 +38,36 @@ def info2list(dict_review, csv_header):
     
     list_review = [0] * len(csv_header)
     
-    csv_map  = {'Jugadores':               'n_jug',    
+    csv_map  = {'Jugadores':               'n_jug',
+                'Número de jugadores':     'n_jug',
+                'Jugadores/as':            'n_jug',
+                'Fecha':                   'fecha',
                 'Duración':                'duracion',
+                'Duración aproximada del juego':  'duracion',
+                'Duración aproximada':     'duracion',
                 'Dureza':                  'dureza',
-                'Edad':                    'edad',   
+                'Edad':                    'edad',
+                'Edad mínima':             'edad',
+                'Edad mínima recomendada': 'edad',
                 'Precio':                  'precio',
-                 'Género':                 'genero',  
+                'PVP Recomendado':         'precio',
+                'Género':                  'genero',
+                'Genero/mecánicas':        'genero',
+                'Genero / Mecánicas':      'genero',
+                'Género / Mecánicas':      'genero',
                 'Editorial':               'editorial',
-                 'Diseñador/a':            'diseño',
+                'Diseñador/a':             'diseño',
+                'Autor/a':                 'diseño',
                 'Total':                   'val_glob',
                 'Aspecto / Componentes':   'val_asp',
                 'Interacción':             'val_inter',
+                'Diversión':               'val_div',
                 'Variabilidad':            'val_var',
+                'Rejugabilidad':           'val_rej',
                 'Originalidad':            'val_org', 
-                'Mecánicas':               'val_mec', 
-                'Conclusión':               'val_cual'}
+                'Mecánicas':               'val_mec',
+                'Calidad de Mecánicas':    'val_mec',
+                'Conclusion':              'val_cual'}
      
     # Capturo el nombre del juego
     name = list(dict_review.keys())[0]    
@@ -59,22 +75,27 @@ def info2list(dict_review, csv_header):
     
     values = list(dict_review.values())[0]
     for key in values.keys():
-        idx = csv_header.index(csv_map[key])
-        list_review[idx] = values[key]
+        try:            
+            idx = csv_header.index(csv_map[key])
+            list_review[idx] = values[key]
+        except:
+            print(key, ':', values[key])       
     
     return list_review
 
 # Obtener la lista de enlaces a reseñas y guardar en list
-filename = "mishigeek_reviews.csv"
+#filename = "mishigeek_reviews.csv"
+filename = "mishigeek_reviews_test.csv"
+url_list = []
 
-f = open(filename)
-url_list = f.readlines()[0].split(',')
+with open(filename, 'r') as f:
+    reader = csv.reader(f, delimiter=',')
+    for row in reader:
+        url_list.append(row)
 
-f.close()
-
-csv_header = ['nombre', 'n_jug', 'duracion', 'dureza', 'edad', 'precio',
-              'genero', 'editorial', 'diseño', 'val_asp', 'val_inter',
-              'val_var', 'val_org', 'val_mec', 'val_glob', 'val_cual']
+csv_header = ['nombre', 'n_jug', 'fecha', 'duracion', 'dureza', 'edad', 'precio',
+              'genero', 'editorial', 'diseño', 'val_asp', 'val_inter', 'val_div',
+              'val_var', 'val_rej', 'val_org', 'val_mec', 'val_glob', 'val_cual']
 
 # csv_map  = {'n_jug':'Jugadores',
 #             'duracion':'Duración',
@@ -95,17 +116,22 @@ csv_header = ['nombre', 'n_jug', 'duracion', 'dureza', 'edad', 'precio',
 # Iterar sobre review_list
 dataset = []
 
-for url in url_list:    
-    dataset.append(info2list(get_info(url), csv_header))
+for url in url_list:
+    try:
+        dataset.append(info2list(get_ratings(url), csv_header))
+    except:
+        print('No se ha analizado: ', url[0])
 
-# Escribir el dataset a un archivo .csv
-with open('boardgame_ranking.csv', 'w', newline='') as f:
+# # Escribir el dataset a un archivo .csv
+with open('boardgame_ranking.csv', 'w', newline='', encoding='utf-8') as f:
     writer = csv.writer(f, delimiter=',')
     writer.writerow(csv_header)
     
     for row in dataset:
         writer.writerow(row)
 
+print(dataset)
+
 
 
 
@@ -121,9 +147,3 @@ with open('boardgame_ranking.csv', 'w', newline='') as f:
  
  
  
-    
-    
-
-
-
-

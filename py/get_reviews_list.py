@@ -10,7 +10,6 @@ from bs4 import BeautifulSoup
 import time
 import csv
 
-
 # Defino la url 
 template_url = "https://mishigeek.com/category/resenas/<review_type>/page/<page_num>/"
 
@@ -61,7 +60,7 @@ for review_type in review_type_list:
                     href = a['href']
                     
                     # Filtro con aquellos que son reseñas
-                    if (href.find('#') == -1) and (href.find("-resena") != -1):                
+                    if (href.find('#') == -1) and (href.find("resena") != -1) and (href.find("resenas") == -1):                
                         resena_list.append([href, review_type])
             
             # Cerrar la sesión
@@ -83,11 +82,11 @@ resena_list = list(set(tuple(l) for l in resena_list))
 for k in set(resena_list):
     print(k)
 
-
-
 # Guardo lista de links con reseña
-with open('mishigeek_reviews.csv', 'w') as f:
-    f.write(resena_csv)
+with open('mishigeek_reviews.csv', 'w', newline='') as f:
+    writer = csv.writer(f, delimiter=',')
+    for link in resena_list:
+        writer.writerow(link)
             
 
 

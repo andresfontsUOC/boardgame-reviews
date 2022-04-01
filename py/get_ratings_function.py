@@ -43,11 +43,12 @@ if (page.ok==True):
     pattern = r'-resena.*$'
     
     # Mediante los bucle for, se buscan todos los valores que coincida con el soup.select
-    for each_part in soup.select('figure[class*="wp-block-table"]'):
-        for each_part in soup.select('tr'):
-            otros.append(each_part.get_text())
-            
-    split_items = (i.split(':') for i in otros[:8])
+    table = soup.find('figure', {'class':'wp-block-table'}).find('table')    
+    
+    for tr in table.select('tr'):
+        otros.append(tr.get_text())
+                
+    split_items = (i.split(':') for i in otros)
     category, value = zip(*split_items)
     category, value = map(list, (category, value))
     
