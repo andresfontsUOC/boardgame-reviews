@@ -13,16 +13,13 @@ import os
 from collections import defaultdict
 
 # Urls que voy a usar
-link = "https://mishigeek.com/its-a-wonderful-kingdom-resena/"
-link2 = "https://mishigeek.com/marco-polo-ii-resena/"
-link3="https://mishigeek.com/race-for-the-galaxy-resena-en-espanol/"
+review = ["https://mishigeek.com/its-a-wonderful-kingdom-resena/", 'aprobado']
 
+link = review[0]
 
 # Capturo la cabecera de la petición HTTP
 headers = requests.utils.default_headers()
 
-
-links=[link, link2, link3]
 # Modifico el User Agent para evitar el bloqueo
 headers.update(
     {
@@ -31,15 +28,13 @@ headers.update(
  )
 
 # Me conecto a la url con .get()
-sitemap_soup = requests.get(link, headers=headers)
-sitemap_soup.close()
+page = requests.get(link, headers=headers)
+page.close()
 
 # Se crea una función para obtener en forma de diccionario todas las valoraciones y datos sobre el juego de mesa:
-
-#def get_info(link):
-if (sitemap_soup.ok==True):
+if (page.ok==True):
     
-    soup = BeautifulSoup(sitemap_soup.text, features="html.parser")
+    soup = BeautifulSoup(page.text, features="html.parser")
     d = defaultdict(dict)
     key = []   
     category = []
@@ -70,16 +65,11 @@ if (sitemap_soup.ok==True):
             value.append(each_part.get_text())
     
     # Obtener la valoración cualitativa
-    div_conclusion = soup.find_all("div",
-                                    {"class": "lets-review-block__conclusion__title lets-review-block__title lr-font-h"})
-     
-    val_cualit = div_conclusion[0].text
     category.append("Conclusion")
-    value.append(val_cualit)
+    value.append(review[1])
     
     for c,v in zip(category,value):
-        d[nombre][c]=v
-    
+        d[nombre][c]=v    
     
     # for k in key:
     #    for c,v in zip(category,value):

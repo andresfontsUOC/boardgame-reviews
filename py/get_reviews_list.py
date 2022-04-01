@@ -53,7 +53,8 @@ for review_type in review_type_list:
             soup = BeautifulSoup(page.content)        
             
             # Itero sobre los elementos 'article'
-            for article in soup.find_all('article'):
+            main_soup = soup.find('div', {'id':'main'})
+            for article in main_soup.find_all('article'):
                 
                 # Itero sobre todo hipervínculo dentro de 'article'
                 for a in article.find_all('a', href=True):
@@ -61,23 +62,28 @@ for review_type in review_type_list:
                     
                     # Filtro con aquellos que son reseñas
                     if (href.find('#') == -1) and (href.find("-resena") != -1):                
-                        resena_list.append(href)
+                        resena_list.append([href, review_type])
             
             # Cerrar la sesión
             page.close()        
             page_num = page_num + 1       
 
-        # TODO hacer un ifelse para 404 not found            
-        else:
-            print("URL " + page.url + "was NOT reached.")
+        # Si la página no existe pasar a siguiente reivew_type
+        elif page.status_code == 404:
+            print("Error 404. Page Not Found. URL " + page.url + "was NOT reached.")
             next_page = False
         
+        else:
+            print("URL " + page.url + "was NOT reached.")
+            next_page = False        
+            
+resena_list = list(set(tuple(l) for l in resena_list))
+
 # Imprimo el resultado
 for k in set(resena_list):
     print(k)
 
-# Guardo como string separado por comas
-resena_csv = ','.join(set(resena_list))
+
 
 # Guardo lista de links con reseña
 with open('mishigeek_reviews.csv', 'w') as f:
