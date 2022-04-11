@@ -11,7 +11,6 @@ import os
 from collections import defaultdict
 import itertools
 
-
 # Se crea una función para obtener en forma de diccionario todas las valoraciones y datos sobre el juego de mesa:
 def get_ratings(review):   
 
@@ -78,8 +77,7 @@ def get_ratings(review):
        
             # Se crea el diccionario anidado a partir del nombre del juego, categoría y valor:
             for c,v in zip(category,value):
-               d[nombre][c]=v
-        
+               d[nombre][c]=v        
             
             # Las siguientes funciones tratan de splitear un valor dentro de otro.
             # Pasa de ser {'Nota de lectores10 Votos', "8.5"} a {'Nota de lectores': '8.5', 'N. Votes': '10 Votos'}
@@ -118,4 +116,4 @@ def get_ratings(review):
             print("Something when wrong with " + page.url)
         
         # Devuelve el diccionario creado por cada link
-        return d            
+        return d
