@@ -30,7 +30,7 @@ headers.update(
      }
     )
 
-# Guardaré la lista de enlaces en resena_list
+# Guardaré la lista de enlaces en resena_list, así como el tipo de reseña
 resena_list = []
 
 for review_type in review_type_list:    
@@ -60,7 +60,8 @@ for review_type in review_type_list:
                     href = a['href']
                     
                     # Filtro con aquellos que son reseñas
-                    if (href.find('#') == -1) and (href.find("resena") != -1) and (href.find("resenas") == -1):                
+                    if (href.find('#') == -1) and (href.find("resena") != -1) and (href.find("resenas") == -1):
+                        # Guardo tanto el url como el tipo de reseña
                         resena_list.append([href, review_type])
             
             # Cerrar la sesión
@@ -75,7 +76,10 @@ for review_type in review_type_list:
         else:
             print("URL " + page.url + "was NOT reached.")
             next_page = False        
-            
+    
+# El resultado es una lista donde cada elemento consta de la url de la reseña
+# así como el tipo de reseña (o conclusión cualitativa). Los tipos de reseña son
+# 'juegaco', 'recomendad', etc, definidos en la lista review_type_list
 resena_list = list(set(tuple(l) for l in resena_list))
 
 # Imprimo el resultado
