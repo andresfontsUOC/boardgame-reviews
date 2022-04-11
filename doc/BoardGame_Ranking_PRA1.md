@@ -14,9 +14,9 @@ MishiGeek.com contiene centenares de reseñas. En cada una se publican diveros t
 El título del dataset es **Boardgames Ranking**.
 
 ### 3 DESCRIPCIÓN DEL DATASET
-El dataset Boardgames Ranking contiene 138 registros y 2989 datos. Cada registro corresponde los datos extraídos de la reseña publicada en mishigeek.com de un juego de mesa.
+El dataset Boardgames Ranking contiene 138 registros. Cada registro corresponde los datos extraídos de la reseña publicada en mishigeek.com de un juego de mesa.
 
-Hemos recopilado 138 reseñas publicadas en mishigeek y para cada una hemos identificado 18 atributos de interés. El formato del dataset obtenido es un fichero CSV.
+Para cada reseña hemos identificado 21 atributos de interés. El formato del dataset obtenido es un fichero CSV.
 
 ### 4 REPRESENTACIÓN GRÁFICA
 ![](boardgame_ranking_artwork.PNG)
@@ -29,6 +29,7 @@ Cada registro de Boardgames Ranking cuenta con los siguientes campos:
 | nombre    | string | Nombre del juego de mesa                    |
 | n_jug     | string | Número de jugadores                         |
 | duracion  | string | Duración de una partida, en minutos         |
+| fecha     | string | Fecha de lanzamiento                        |
 | dureza    | string | Nivel de complejidad del juego              |
 | edad      | string | Edad mínima recomendada o rango de edad     |
 | precio    | float  | Precio del juego en euros                   |
@@ -37,7 +38,9 @@ Cada registro de Boardgames Ranking cuenta con los siguientes campos:
 | diseño    | string | Diseñadores del juego                       |
 | val_asp   | float  | Valoración en cuanto Aspecto / Componentes  |
 | val_inter | float  | Valoración en cuanto a nivel de Interacción |
+| val_div   | float  | Valoración en cuanto a nivel de Diversión   |
 | val_var   | float  | Valoración en cuanto Variabilidad           |
+| val_rej   | float  | Valoración del nivel de Rejugabilidad       |
 | val_org   | float  | Valoración en cuanto a Originalidad         |
 | val_mec   | float  | Valoración de la Calidad de las Mecánicas   |
 | val_lec   | float  | Valoración de los lectores                  |
