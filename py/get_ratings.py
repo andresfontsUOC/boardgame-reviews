@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Apr  1 17:33:06 2022
+Created on Sat Mar 26 12:51:45 2022
 
-@author: fonts
+@author: ignac
 """
 import requests
 import re
