@@ -8,7 +8,7 @@ Los integrantes de esta práctica somos:
 ### 1 CONTEXTO
 El contexto que hemos escogido en esta práctica de Web Scraping la recopilación de valoraciones de juegos de mesa. Hemos escogido la página web www.mishigeek.com para realizar esta tarea.
 
-MishiGeek.com contiene centenares de reseñas. En cada una se publican diveros tipos de valoraciones como "Originalidad" y "Mecánicas". También se asigna una valoración total y una clasificación cualitativa como "Suspenso", "Recomendado" o "Juegaco". 
+MishiGeek.com contiene decenas de reseñas. En cada una se publican diversos tipos de valoraciones como "Originalidad" y "Mecánicas". También se asigna una valoración total y una clasificación cualitativa como "Suspenso", "Recomendado" o "Juegaco". 
 
 ### 2 TÍTULO
 El título del dataset es **Boardgames Ranking**.
