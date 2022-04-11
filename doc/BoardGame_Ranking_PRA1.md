@@ -29,7 +29,7 @@ Cada registro de Boardgames Ranking cuenta con los siguientes campos:
 | nombre    | string | Nombre del juego de mesa                    |
 | n_jug     | string | Número de jugadores                         |
 | duracion  | string | Duración de una partida, en minutos         |
-| dureza    | string | Preguntar a Mishieek                        |
+| dureza    | string | Nivel de complejidad del juego              |
 | edad      | string | Edad mínima recomendada o rango de edad     |
 | precio    | float  | Precio del juego en euros                   |
 | genero    | string | Género al que pertenece el juego            |
