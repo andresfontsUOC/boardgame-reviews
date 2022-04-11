@@ -20,6 +20,7 @@ El dataset Boardgames Ranking contiene N registros y NxM datos. Cada registro co
 Hemos recopilado N reseñas publicadas en mishigeek y para cada una hemos identificado M atributos de interés. El formato del dataset obtenido es un fichero CSV.
 
 ### 4 REPRESENTACIÓN GRÁFICA
+![](boardgame_ranking_artwork.PNG)
 
 ### 5 CONTENIDO
 Cada registro de Boardgames Ranking cuenta con los siguientes campos:
@@ -39,7 +40,7 @@ Cada registro de Boardgames Ranking cuenta con los siguientes campos:
 | val_inter | float  | Valoración en cuanto a nivel de Interacción |
 | val_var   | float  | Valoración en cuanto Variabilidad           |
 | val_org   | float  | Valoración en cuanto a Originalidad         |
-| val_mec   | float  | Valoración en cuanto Mecánicas              |
+| val_mec   | float  | Valoración de la Calidad de las Mecánicas   |
 | val_lec   | float  | Valoración de los lectores                  |
 | n_votos   | int    | Número de votos con que cuenta val_lec      |
 | val_glob  | float  | Valoración global del juego                 |
@@ -86,7 +87,10 @@ El propietario de MishiGeek no ha permitido publicar los datos de forma abierta,
 * Generaremos un _dataset_ ficticio que compartiremos bajo la licencia _CC BY_, que permite compartir, modificar y distribuir los datos con fines comerciales y no comerciales, siempre que se acredite al autor/a.
 
 ### 9 CÓDIGO
+El código utilizado puede consultarse dentro del directorio `/py` del repositorio `boardgame-reviews`.
 
 ### 10 DATASET
+Hemos publicado una simulación del dataset obtenido en Zenodo [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6447900.svg)](https://doi.org/10.5281/zenodo.6447900)
 
 ### 11 VÍDEO
+El enlace para el video se ha indicado en el documento de entrega de la práctica.
