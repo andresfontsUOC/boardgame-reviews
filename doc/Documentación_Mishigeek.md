@@ -45,7 +45,7 @@ Cada registro de Boardgames Ranking cuenta con los siguientes campos:
 | val_glob  | float  | Valoración global del juego                 |
 | val_cual  | string | Valoración Cualitativa                      |
 
-Los datos de nuestro dataset se han recogido de publicaciones en mishigeek.com comprendidas entre las fechas día/mes/año y día/mes/año.
+Los datos de nuestro dataset se han recogido de publicaciones en mishigeek.com comprendidas entre las fechas 02/10/2018 y 11/04/2022.
 
 Hemos estructurado la solución en 3 partes:
 1. Script de python que analiza las páginas de reseñas y obtiene las direcciones url de cada reseña publicada en mishigeek.com. La lista se escribe en un fichero CSV.
