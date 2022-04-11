@@ -11,6 +11,8 @@ En el directorio `/py` hemos alojado los scripts y csv utilizados para generar e
 * `get_reviews_list.py`. Script que genera un archivo csv con las urls de las reseñas, así como la categoría de reseña.
 * `mishigeek_reviews.csv`. Archivo generado por `get_reviews_list.py` que contiene los urls de las reseñas publicadas en mishigeek.com. Este csv **no es el dataset** obtenido. Dicho dataset no se ha publicado a petición del propietario de los datos.
 
+El archivo en la raíz `BoardGame_Ranking_PRA1.pdf` contiene las respuestas requeridas de la PRA1.
+
 # Autores
 Ignacio Such Ballester (isuch@uoc.edu)
 
