@@ -1,4 +1,3 @@
-
 # PRÁCTICA 1
 ## EQUIPO
 Los integrantes de esta práctica somos:
@@ -15,9 +14,9 @@ MishiGeek.com contiene centenares de reseñas. En cada una se publican diveros t
 El título del dataset es **Boardgames Ranking**.
 
 ### 3 DESCRIPCIÓN DEL DATASET
-El dataset Boardgames Ranking contiene N registros y NxM datos. Cada registro corresponde a un juego de mesa.
+El dataset Boardgames Ranking contiene 138 registros y 2989 datos. Cada registro corresponde los datos extraídos de la reseña publicada en mishigeek.com de un juego de mesa.
 
-Hemos recopilado N reseñas publicadas en mishigeek y para cada una hemos identificado M atributos de interés. El formato del dataset obtenido es un fichero CSV.
+Hemos recopilado 138 reseñas publicadas en mishigeek y para cada una hemos identificado 18 atributos de interés. El formato del dataset obtenido es un fichero CSV.
 
 ### 4 REPRESENTACIÓN GRÁFICA
 ![](boardgame_ranking_artwork.PNG)
@@ -49,9 +48,9 @@ Cada registro de Boardgames Ranking cuenta con los siguientes campos:
 Los datos de nuestro dataset se han recogido de publicaciones en mishigeek.com comprendidas entre las fechas 02/10/2018 y 11/04/2022.
 
 Hemos estructurado la solución en 3 partes:
-1. Script de python que analiza las páginas de reseñas y obtiene las direcciones url de cada reseña publicada en mishigeek.com. La lista se escribe en un fichero CSV.
-2. Función de python que dada una reseña obtiene cada uno de los campos
-3. Script de python queitera sobre la lista de enlaces obtenida en el punto 1. y obtiene de cada enlace los campos llamando a la función definida en 2.
+1. Script `get_reviews_list.py`. Analiza las páginas de reseñas y obtiene las direcciones url de cada reseña publicada en mishigeek.com. La lista se escribe en un fichero CSV.
+2. Función `get_ratings`. Definida dentro de `get_ratings.py`, dada una reseña obtiene cada uno de los campos.
+3. Script `gen_boardgame_dataset.py`. Itera sobre la lista de enlaces obtenida por `get_reviews_list.py` y obtiene de cada enlace los campos llamando a la función `get_rating`.
 
 Hemos empleado la librería _Requests_ para acceder a las urls así como _Beautiful Soup (bs4)_ para navegar por el contenido de la url.
 
@@ -94,3 +93,13 @@ Hemos publicado una simulación del dataset obtenido en Zenodo [![DOI](https://z
 
 ### 11 VÍDEO
 El enlace para el video se ha indicado en el documento de entrega de la práctica.
+
+
+## CONTRIBUCIONES
+
+| Contribuciones                | Firma    |
+|-------------------------------|----------|
+| Investigación previa          | IS, AF   |
+| Redacción de las respuestas   | IS, AF   |
+| Desarrollo del código         | IS, AF   |
+
