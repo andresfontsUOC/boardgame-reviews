@@ -40,6 +40,8 @@ Cada registro de Boardgames Ranking cuenta con los siguientes campos:
 | val_var   | float  | Valoración en cuanto Variabilidad           |
 | val_org   | float  | Valoración en cuanto a Originalidad         |
 | val_mec   | float  | Valoración en cuanto Mecánicas              |
+| val_lec   | float  | Valoración de los lectores                  |
+| n_votos   | int    | Número de votos con que cuenta val_lec      |
 | val_glob  | float  | Valoración global del juego                 |
 | val_cual  | string | Valoración Cualitativa                      |
 
@@ -50,16 +52,15 @@ Hemos estructurado la solución en 3 partes:
 2. Función de python que dada una reseña obtiene cada uno de los campos
 3. Script de python queitera sobre la lista de enlaces obtenida en el punto 1. y obtiene de cada enlace los campos llamando a la función definida en 2.
 
-Para recopilar los datos se han empleado técnicas de buena práxis para el web scraping. Para este proyecto, se ha empleado el uso de la librería _Beautiful Soup (bs4)_.Esta librería transforma en texto plano la web y mediante el uso de funciones de la misma librería y expresiones regulares, se ha logrado obtener los datos necesarios para la creación del dataset. 
-Para lograr esto, se ha creado un script que extraiga del archivo _sitemap.xml_ todos los links que ponga la regex _-resena_. Una vez extraídos los links, se ha creado una función que por cada web, extraiga las valoraciones de ese juego y categorías de dichas valoraciones, y las almacene en un diccionario. Para hacer este proceso, se ha de implementar un delay de tiempo para que la página web no bloquee los scripts aún teniendo el permiso del autor. Es por ello que por cada extracción de datos, se dará un margen de unos 30 segundos para que el servidor web entienda que no estamos saturando la web.
+Hemos empleado la librería _Requests_ para acceder a las urls así como _Beautiful Soup (bs4)_ para navegar por el contenido de la url.
 
 ### 6 AGRADECIMIENTOS
 Para poder realizar la tarea de _web scraping_ hemos necesitado tomar tres medidas básicas:
 * Solicitar permiso a mishigeek.com para realizar la actividad.
 * Consulatar _robots.txt_ de mishigeed.com y modificar la cabecera de la petición HTTP para evitar el bloqueo de mishigeek.com
 * Prevenir la saturación del servidor debido a nuestras conexiones.
-   * Hemos calculamos un tiempo entre peticiones de _n_ milisegundos.
-   * El código se estructura en dos archivos que se ejecutan de forma secuencial. En primer lugar se realiza una búsqueda de enlaces con reseñas y en segundo lugar se analizan los enlaces con reseñas para obtener el _dataset_. Así prevenimos también realizar centenares de peticiones al servidor en un espacio corto de tiempo.
+   * El tiempo medio entre peticiones sucesicas al servidor es de 3.5 segundos. Accedemos a cada _url_ de forma secuencial.
+   * El código se estructura en dos scripts de python. En primer lugar se realiza una búsqueda de enlaces con reseñas y en segundo lugar se analizan los enlaces con reseñas para obtener el _dataset_. Así prevenimos también realizar centenares de peticiones al servidor en un espacio corto de tiempo.
 
 Los datos recogidos son propiedad de Javier Rodríguez Menéndez, autor del blog mishigeek.com. Agradecemos la colaboración de Javier al consentir explícitamente la labor de _web scrpaing_ en su dirección web, con la condición de tratar sus datos de manera privada y no distribuirlos de forma pública.
 
