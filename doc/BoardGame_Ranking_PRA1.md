@@ -48,8 +48,11 @@ Cada registro de Boardgames Ranking cuenta con los siguientes campos:
 Los datos de nuestro dataset se han recogido de publicaciones en mishigeek.com comprendidas entre las fechas 02/10/2018 y 11/04/2022.
 
 Hemos estructurado la solución en 3 partes:
+
 1. Script `get_reviews_list.py`. Analiza las páginas de reseñas y obtiene las direcciones url de cada reseña publicada en mishigeek.com. La lista se escribe en un fichero CSV.
+
 2. Función `get_ratings`. Definida dentro de `get_ratings.py`, dada una reseña obtiene cada uno de los campos.
+
 3. Script `gen_boardgame_dataset.py`. Itera sobre la lista de enlaces obtenida por `get_reviews_list.py` y obtiene de cada enlace los campos llamando a la función `get_rating`.
 
 Hemos empleado la librería _Requests_ para acceder a las urls así como _Beautiful Soup (bs4)_ para navegar por el contenido de la url.

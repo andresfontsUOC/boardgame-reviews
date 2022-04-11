@@ -52,7 +52,7 @@ def get_ratings(review):
             
             for tr in table.select('tr'):
                 otros.append(tr.get_text())
-            # En la tabla, se obtienen los primeros 8 elementos.           
+            # En la tabla, se obtienen los elementos.
             split_items = (i.split(':') for i in otros)
             category, value = zip(*split_items)
             category, value = map(list, (category, value))
